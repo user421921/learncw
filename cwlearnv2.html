@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morse Code Practice</title>
+    <style>
+        body {
+            background-color: black;
+            color: limegreen;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            margin-top: 50px;
+        }
+        h1 {
+            font-size: 28px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 20px;
+        }
+        #output {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        .morse-box {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 24px;
+            background: #222;
+            color: limegreen;
+            border: 2px solid limegreen;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Morse Code Practice</h1>
+    <p>Press and hold the <strong>Spacebar</strong> to simulate a Morse key.</p>
+    <div class="morse-box">
+        <p id="morseOutput">Morse: </p>
+        <p id="textOutput">Translated: </p>
+    </div>
+
+    <script>
+        let startTime, morseSequence = "", decodedText = "", lastInputTime;
+        const morseOutput = document.getElementById("morseOutput");
+        const textOutput = document.getElementById("textOutput");
+
+        const morseCodeMap = {
+            ".-": "A", "-...": "B", "-.-.": "C", "-..": "D", ".": "E", "..-.": "F",
+            "--.": "G", "....": "H", "..": "I", ".---": "J", "-.-": "K", ".-..": "L",
+            "--": "M", "-.": "N", "---": "O", ".--.": "P", "--.-": "Q", ".-.": "R",
+            "...": "S", "-": "T", "..-": "U", "...-": "V", ".--": "W", "-..-": "X",
+            "-.--": "Y", "--..": "Z", "-----": "0", ".----": "1", "..---": "2",
+            "...--": "3", "....-": "4", ".....": "5", "-....": "6", "--...": "7",
+            "---..": "8", "----.": "9", "/": " " // Space between words
+        };
+
+        document.addEventListener("keydown", (event) => {
+            if (event.code === "Space" && !startTime) {
+                startTime = Date.now();
+                event.preventDefault();
+            }
+        });
+
+        document.addEventListener("keyup", (event) => {
+            if (event.code === "Space" && startTime) {
+                let duration = Date.now() - startTime;
+                let symbol = duration < 200 ? "." : "-";
+                startTime = null;
+
+                let currentTime = Date.now();
+                if (lastInputTime && (currentTime - lastInputTime) > 800) {
+                    decodeMorse();
+                    morseSequence = "";
+                }
+
+                morseSequence += symbol;
+                morseOutput.textContent = "Morse: " + morseSequence;
+                lastInputTime = currentTime;
+            }
+        });
+
+        function decodeMorse() {
+            if (morseSequence in morseCodeMap) {
+                decodedText += morseCodeMap[morseSequence];
+            }
+            decodedText += " ";
+            textOutput.textContent = "Translated: " + decodedText.trim();
+        }
+
+        setInterval(() => {
+            if (morseSequence && Date.now() - lastInputTime > 800) {
+                decodeMorse();
+                morseSequence = "";
+            }
+        }, 100);
+    </script>
+
+</body>
+</html>
