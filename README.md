@@ -1,6 +1,38 @@
 # learncw
-This is a piece of webcode that I did to run locally to test your CW skills and a way to practice it without a radio or key. It uses the space bar as a straight key, sorry for all of those iambic fans out there. It also has a pretty nice theme and I might add more in the future.
 
-## https://raw.githack.com/user421921/learncw/main/cwlearnv2.html
+**learncw** is a simple web application designed to help you practice Morse Code (CW) skills locally. It allows you to test and improve your CW proficiency without needing a radio or physical key. The app uses the **space bar** as a straight key, so iambic fans might want to look elsewhere, but it's a great tool for anyone looking to practice!
 
-Here you can test out the code without downloading it
+The app also comes with a sleek theme and may receive additional features in the future.
+
+---
+
+## 🚀 Test It Out
+
+You can test the code directly without downloading it by using the following link:
+
+[🔗 Test learncw](https://raw.githack.com/user421921/learncw/main/cwlearnv2.html)
+
+---
+
+## Features
+
+- 🖱️ **Practice CW skills** without needing a physical key or radio
+- 🛠️ **Space bar** used as a straight key for simplicity (sorry iambic fans!)
+- 🎨 **Sleek theme** that makes practicing fun
+- 🚀 **Future improvements** coming soon!
+
+---
+
+## 💬 Feedback
+
+Feel free to contribute or suggest improvements! I’m always open to new ideas and feedback.
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+### Enjoy practicing your CW skills!
